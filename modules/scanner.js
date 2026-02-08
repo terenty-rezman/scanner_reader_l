@@ -73,6 +73,9 @@ export async function initScanner(readerId, scannerConfig) {
     envCamera = await getEnvironmentCameraId();
     console.log("Environment camera:", envCamera.id, envCamera.label);
 
+    document.getElementById("env_camera").textContent =
+      `Environment camera: ${envCamera.label}`;
+
     //   document.getElementById("cameras_back").innerHTML = `
     //   <div>Back Camera ID: ${envCamera.id}</div>
     //   <div>Back Camera Label: ${envCamera.label || "Без названия"}</div>
