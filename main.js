@@ -92,3 +92,23 @@ document.getElementById("send-btn").addEventListener("click", () => {
   setTimeout(hideSentModal, TIMEOUT);
   setTimeout(startScanner, TIMEOUT);
 });
+
+const video = document.getElementById("videoElement");
+
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+  // Request access to the video stream
+  navigator.mediaDevices
+    .getUserMedia({ video: true })
+    .then(function (stream) {
+      // Success: Attach the stream to the video element
+      video.srcObject = stream;
+      video.play();
+    })
+    .catch(function (error) {
+      // Error handling (e.g., user denied permission)
+      console.error("Error accessing camera:", error);
+      alert("Could not access the camera. Please allow camera permissions.");
+    });
+} else {
+  alert("getUserMedia is not supported by your browser");
+}
