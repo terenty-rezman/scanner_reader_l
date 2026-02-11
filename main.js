@@ -98,7 +98,7 @@ const video = document.getElementById("videoElement");
 if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
   // Request access to the video stream
   navigator.mediaDevices
-    .getUserMedia({ video: true })
+    .getUserMedia({ video: { facingMode: { exact: "environment" } } })
     .then(function (stream) {
       // Success: Attach the stream to the video element
       video.srcObject = stream;
