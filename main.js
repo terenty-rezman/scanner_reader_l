@@ -64,9 +64,9 @@ window.onload = () => {
         `video_el_height: ${video.clientHeight}`;
 
       // video.style.width = window.innerWidth + "px";
-      // video.style.height = "100vh";
-      // video.style.position = "fixed";
-      // video.style.objectFit = "cover";
+      video.style.height = "100vh";
+      video.style.position = "fixed";
+      video.style.objectFit = "cover";
 
       // requestAnimationFrame(() => {
       //   console.log("After update:", video.clientWidth, video.clientHeight);
