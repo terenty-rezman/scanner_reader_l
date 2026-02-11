@@ -126,11 +126,16 @@ export async function initScanner(readerId, scannerConfig) {
 export function startScanner() {
   html5Qrcode.start({ deviceId: cameraId }, config, onScanSuccess, onScanError);
 
-  const video = document.querySelector("video");
+  // const video = document.querySelector("video");
 
-  video.style.height = "100vh";
-  video.style.position = "fixed";
-  video.style.objectFit = "cover";
+  // video.style.height = "100vh";
+  // video.style.position = "fixed";
+  // video.style.objectFit = "cover";
+
+  const reader = document.querySelector("reader");
+  reader.style.height = "100vh";
+  reader.style.position = "fixed";
+  reader.style.objectFit = "cover";
 }
 
 export function stopScanner() {

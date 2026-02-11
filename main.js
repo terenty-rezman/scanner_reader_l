@@ -50,6 +50,7 @@ window.onload = () => {
 
   const observer = new MutationObserver(() => {
     const video = document.querySelector("video");
+    const reader = document.querySelector("reader");
     if (!video) return;
 
     console.log("video найден", video);
@@ -64,10 +65,13 @@ window.onload = () => {
         `video_el_height: ${video.clientHeight}`;
 
       // video.style.width = window.innerWidth + "px";
-      video.style.height = "100vh";
-      video.style.position = "fixed";
-      video.style.objectFit = "cover";
+      // video.style.height = "100vh";
+      // video.style.position = "fixed";
+      // video.style.objectFit = "cover";
 
+      reader.style.height = "100vh";
+      reader.style.position = "fixed";
+      reader.style.objectFit = "cover";
       // requestAnimationFrame(() => {
       //   console.log("After update:", video.clientWidth, video.clientHeight);
       // });
