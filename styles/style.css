@@ -63,7 +63,7 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 105;
-  max-height: 300px;
+  /* max-height: 300px; */
 }
 
 .modal__content {

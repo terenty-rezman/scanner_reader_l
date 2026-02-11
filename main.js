@@ -50,7 +50,7 @@ window.onload = () => {
 
   const observer = new MutationObserver(() => {
     const video = document.querySelector("video");
-    const reader = document.querySelector("reader");
+    // const reader = document.getElementById("reader");
     if (!video) return;
 
     console.log("video найден", video);
@@ -69,9 +69,9 @@ window.onload = () => {
       // video.style.position = "fixed";
       // video.style.objectFit = "cover";
 
-      reader.style.height = "100vh";
-      reader.style.position = "fixed";
-      reader.style.objectFit = "cover";
+      // reader.style.height = "100dvh";
+      // reader.style.position = "fixed";
+      // reader.style.objectFit = "cover";
       // requestAnimationFrame(() => {
       //   console.log("After update:", video.clientWidth, video.clientHeight);
       // });
