@@ -1,4 +1,4 @@
-import { addScan, getState } from "./state.js";
+import { addScan, getState, resetState } from "./state.js";
 import { showModal } from "./modal.js";
 
 let html5Qrcode;
@@ -166,7 +166,7 @@ function onScanSuccess(text, result) {
   if (!added) return;
 
   updateUI();
-  stopScanner().then(showModal);
+  stopScanner().then(showModal).then(resetState).then(updateUI);
 }
 
 function onScanError(err) {

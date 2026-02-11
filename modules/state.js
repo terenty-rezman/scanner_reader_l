@@ -9,6 +9,7 @@ export function addScan(key, result) {
   scannedIndex.set(key, result);
   console.log("Set:", scannedSet);
   count++;
+  console.log("Count:", count);
 
   return true;
 }
