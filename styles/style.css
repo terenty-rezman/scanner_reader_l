@@ -130,12 +130,12 @@ button:hover {
 }
 
 .scanner-fullscreen {
-  height: 100vh;
+  height: 100dvh;
   position: fixed;
 }
 
 .scanner-fullscreen video {
-  height: 100vh;
+  height: 100dvh;
   object-fit: cover;
 }
 
