@@ -7,7 +7,7 @@ const TIMEOUT = 3000;
 
 console.log("Браузер:", detectBrowser());
 
-const browser = detectBrowser();
+// const browser = detectBrowser();
 
 const screenResolution = {
   screenWidth: screen.width,
@@ -50,7 +50,7 @@ window.onload = () => {
 
   const observer = new MutationObserver(() => {
     const video = document.querySelector("video");
-    // const reader = document.getElementById("reader");
+
     if (!video) return;
 
     console.log("video найден", video);
@@ -63,18 +63,6 @@ window.onload = () => {
         `video_el_width: ${video.clientWidth}`;
       document.getElementById("video_el_h_id").textContent =
         `video_el_height: ${video.clientHeight}`;
-
-      // video.style.width = window.innerWidth + "px";
-      // video.style.height = "100vh";
-      // video.style.position = "fixed";
-      // video.style.objectFit = "cover";
-
-      // reader.style.height = "100dvh";
-      // reader.style.position = "fixed";
-      // reader.style.objectFit = "cover";
-      // requestAnimationFrame(() => {
-      //   console.log("After update:", video.clientWidth, video.clientHeight);
-      // });
     });
   });
 
@@ -98,23 +86,3 @@ document.getElementById("send-btn").addEventListener("click", () => {
   setTimeout(hideSentModal, TIMEOUT);
   setTimeout(startScanner, TIMEOUT);
 });
-
-// const video = document.getElementById("videoElement");
-
-// if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-//   // Request access to the video stream
-//   navigator.mediaDevices
-//     .getUserMedia({ video: { facingMode: { exact: "environment" } } })
-//     .then(function (stream) {
-//       // Success: Attach the stream to the video element
-//       video.srcObject = stream;
-//       video.play();
-//     })
-//     .catch(function (error) {
-//       // Error handling (e.g., user denied permission)
-//       console.error("Error accessing camera:", error);
-//       alert("Could not access the camera. Please allow camera permissions.");
-//     });
-// } else {
-//   alert("getUserMedia is not supported by your browser");
-// }

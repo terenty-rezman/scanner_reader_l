@@ -133,6 +133,8 @@ button:hover {
   position: fixed;
   inset: 0;
   overflow: hidden;
+  height: 100vh;
+  height: 100dvh;
 }
 
 .scanner-fullscreen video {

@@ -124,19 +124,6 @@ export async function initScanner(readerId, scannerConfig) {
 }
 
 export async function startScanner() {
-  // html5Qrcode.start({ deviceId: cameraId }, config, onScanSuccess, onScanError);
-
-  // const video = document.querySelector("video");
-
-  // video.style.height = "100vh";
-  // video.style.position = "fixed";
-  // video.style.objectFit = "cover";
-
-  // const reader = document.getElementById("reader");
-  // reader.style.height = "100vh";
-  // reader.style.position = "fixed";
-  // reader.style.objectFit = "cover";
-
   await html5Qrcode.start(
     { deviceId: cameraId },
     config,
@@ -147,20 +134,9 @@ export async function startScanner() {
   const waitForVideo = setInterval(() => {
     const reader = document.getElementById("reader");
     if (reader) {
-      // reader.style.height = "100vh";
-      // reader.style.position = "fixed";
-      // reader.style.objectFit = "cover";
       reader.classList.add("scanner-fullscreen");
       clearInterval(waitForVideo);
     }
-
-    // const video = document.querySelector("video");
-    // const video = document.querySelector("#reader video");
-    // if (video) {
-    //   video.style.height = "100vh";
-    //   video.style.position = "fixed";
-    //   video.style.objectFit = "cover";
-    // }
   }, 100);
 }
 
