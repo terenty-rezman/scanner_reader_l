@@ -121,14 +121,14 @@ export async function initScanner(readerId, scannerConfig) {
     `Camera: ${backCamera.label || "default"}`;
 
   startScanner();
-
-  video.style.height = "100vh";
-  video.style.position = "fixed";
-  video.style.objectFit = "cover";
 }
 
 export function startScanner() {
   html5Qrcode.start({ deviceId: cameraId }, config, onScanSuccess, onScanError);
+
+  video.style.height = "100vh";
+  video.style.position = "fixed";
+  video.style.objectFit = "cover";
 }
 
 export function stopScanner() {
