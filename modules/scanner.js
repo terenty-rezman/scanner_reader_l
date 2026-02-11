@@ -123,6 +123,14 @@ export async function initScanner(readerId, scannerConfig) {
   startScanner();
 }
 
+function setRealHeight() {
+  document.documentElement.style.setProperty(
+    "--real-height",
+    `${window.innerHeight}px`,
+  );
+  console.log("Установка реальной высоты:", window.innerHeight);
+}
+
 export async function startScanner() {
   await html5Qrcode.start(
     { deviceId: cameraId },
@@ -138,6 +146,11 @@ export async function startScanner() {
       clearInterval(waitForVideo);
     }
   }, 100);
+
+  window.addEventListener("resize", setRealHeight);
+  window.addEventListener("orientationchange", setRealHeight);
+
+  setRealHeight();
 }
 
 export function stopScanner() {

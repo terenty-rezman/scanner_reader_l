@@ -1,3 +1,7 @@
+:root {
+  --real-height: 100vh;
+}
+
 html,
 body {
   width: 100%;

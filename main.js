@@ -70,16 +70,6 @@ window.onload = () => {
     childList: true,
     subtree: true,
   });
-
-  function setRealHeight() {
-    document.documentElement.style.setProperty(
-      "--real-height",
-      `${window.innerHeight}px`,
-    );
-  }
-
-  window.addEventListener("resize", setRealHeight);
-  setRealHeight();
 };
 
 document.getElementById("rescan-btn").addEventListener("click", () => {
