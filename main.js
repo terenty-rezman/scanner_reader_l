@@ -35,7 +35,7 @@ document.getElementById("viewportHeight_id").textContent =
 
 const config = {
   fps: 20,
-  qrbox: { width: 300, height: 240 },
+  qrbox: { width: 310, height: 240 },
   // aspectRatio: window.innerWidth / window.innerHeight,
   aspectRatio: window.innerHeight / window.innerWidth,
   rememberLastUsedCamera: true,
