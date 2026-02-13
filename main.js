@@ -1,13 +1,8 @@
 import { initScanner, startScanner } from "./modules/scanner.js";
 import { hideModal, showSentModal, hideSentModal } from "./modules/modal.js";
 import { resetState, scannedSet } from "./modules/state.js";
-import { detectBrowser } from "./modules/browser.js";
 
 const TIMEOUT = 3000;
-
-console.log("Браузер:", detectBrowser());
-
-// const browser = detectBrowser();
 
 const screenResolution = {
   screenWidth: screen.width,
@@ -53,12 +48,9 @@ window.onload = () => {
 
     if (!video) return;
 
-    console.log("video найден", video);
     observer.disconnect();
 
     video.addEventListener("loadedmetadata", () => {
-      console.log("Before update:", video.clientWidth, video.clientHeight);
-
       document.getElementById("video_el_w_id").textContent =
         `video_el_width: ${video.clientWidth}`;
       document.getElementById("video_el_h_id").textContent =

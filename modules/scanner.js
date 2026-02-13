@@ -51,9 +51,6 @@ async function getEnvironmentCameraId() {
       )
       .join("");
 
-    // console.log("Using track:", track);
-    // console.log("Track settings:", settings);
-
     return {
       id: settings.deviceId || null,
       label: track.label || null,
@@ -75,11 +72,6 @@ export async function initScanner(readerId, scannerConfig) {
 
     document.getElementById("env_camera").textContent =
       `Environment camera: ${envCamera.label}`;
-
-    //   document.getElementById("cameras_back").innerHTML = `
-    //   <div>Back Camera ID: ${envCamera.id}</div>
-    //   <div>Back Camera Label: ${envCamera.label || "Без названия"}</div>
-    // `;
   } catch (e) {
     console.warn("Environment camera not available, fallback", e);
   }
@@ -95,22 +87,8 @@ export async function initScanner(readerId, scannerConfig) {
     });
   });
 
-  // document.getElementById("cameras_id").innerHTML = cameras
-  //   .map(
-  //     (c, index) => `
-  //       <div style="margin-bottom:8px">
-  //         <div><strong>Camera ${index + 1}</strong></div>
-  //         <div>id: ${c.id}<div>
-  //         <div>label: ${c.label || "Без названия"}</div>
-  //       </div>
-  //     `,
-  //   )
-  //   .join("");
-
   const backCamera =
     cameras.find((c) => /back|rear|environment/i.test(c.label)) || cameras[0];
-
-  // cameraId = backCamera.id;
 
   cameraId =
     cameras.find((c) => c.id === envCamera?.id)?.id ||
@@ -122,14 +100,6 @@ export async function initScanner(readerId, scannerConfig) {
 
   startScanner();
 }
-
-// function setRealHeight() {
-//   document.documentElement.style.setProperty(
-//     "--real-height",
-//     `${window.innerHeight}px`,
-//   );
-//   console.log("Установка реальной высоты:", window.innerHeight);
-// }
 
 export async function startScanner() {
   await html5Qrcode.start(
@@ -146,11 +116,6 @@ export async function startScanner() {
       clearInterval(waitForVideo);
     }
   }, 100);
-
-  // window.addEventListener("resize", setRealHeight);
-  // window.addEventListener("orientationchange", setRealHeight);
-
-  // setRealHeight();
 }
 
 export function stopScanner() {
