@@ -7,16 +7,16 @@ export function addScan(key, result) {
 
   scannedSet.add(result);
   scannedIndex.set(key, result);
-  console.log("Set:", scannedSet);
+  // console.log("addScan - Set:", scannedSet);
   count++;
-  console.log("Count:", count);
+  // console.log("Count:", count);
 
   return true;
 }
 
 export function resetState() {
-  scannedSet = new Set();
-  scannedIndex = new Map();
+  scannedSet.clear();
+  scannedIndex.clear();
   count = 0;
 }
 

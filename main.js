@@ -1,6 +1,7 @@
 import { initScanner, startScanner } from "./modules/scanner.js";
 import { hideModal, showSentModal, hideSentModal } from "./modules/modal.js";
-import { resetState, scannedSet } from "./modules/state.js";
+import { getState, resetState, scannedSet } from "./modules/state.js";
+import { sendScannerData } from "./api/api.js";
 
 const TIMEOUT = 3000;
 
@@ -29,8 +30,8 @@ document.getElementById("viewportHeight_id").textContent =
   `viewportHeight: ${screenResolution.viewportHeight}`;
 
 const config = {
-  fps: 20,
-  qrbox: { width: 310, height: 240 },
+  fps: 15,
+  qrbox: { width: 280, height: 240 },
   // aspectRatio: window.innerWidth / window.innerHeight,
   aspectRatio: window.innerHeight / window.innerWidth,
   rememberLastUsedCamera: true,
@@ -71,10 +72,30 @@ document.getElementById("rescan-btn").addEventListener("click", () => {
 });
 
 document.getElementById("send-btn").addEventListener("click", () => {
-  console.log(`Отправка... `, scannedSet);
+  const state = getState();
+
+  console.log(
+    "Отправка...",
+    JSON.stringify({
+      ...state,
+      scannedSet: [...state.scannedSet],
+    }),
+  );
+
+  const scannedArray = [...state.scannedSet];
+  const scannerData = scannedArray.map((item) => ({
+    text: item.decodedText,
+    format: item.result?.format?.formatName,
+    date: new Date().toISOString(),
+  }));
+
+  const res = sendScannerData(scannerData);
+
   showSentModal();
   hideModal();
-  resetState();
+  setTimeout(resetState, TIMEOUT);
   setTimeout(hideSentModal, TIMEOUT);
   setTimeout(startScanner, TIMEOUT);
 });
+
+// Отправка... {"scannedSet":[{"decodedText":"\u001d0104602441024650215ormOJdNxoNzv\u001d93bwZV","result":{"text":"\u001d0104602441024650215ormOJdNxoNzv\u001d93bwZV","format":{"format":6,"formatName":"DATA_MATRIX"},"debugData":{"decoderName":"zxing-js"}}}],"scannedIndex":{},"count":1}

@@ -131,7 +131,7 @@ function onScanSuccess(text, result) {
   if (!added) return;
 
   updateUI();
-  stopScanner().then(showModal).then(resetState).then(updateUI);
+  stopScanner().then(showModal).then(updateUI);
 }
 
 function onScanError(err) {
