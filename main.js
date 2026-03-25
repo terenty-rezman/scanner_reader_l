@@ -91,7 +91,12 @@ document.getElementById("send-btn").addEventListener("click", () => {
 
   const res = sendScannerData(scannerData);
 
-  showSentModal();
+  if (res) {
+    showSentModal();
+  } else {
+    console.log("res:", res, "Something went wrong");
+  }
+
   hideModal();
   setTimeout(resetState, TIMEOUT);
   setTimeout(hideSentModal, TIMEOUT);
