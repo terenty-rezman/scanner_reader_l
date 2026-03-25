@@ -71,7 +71,7 @@ document.getElementById("rescan-btn").addEventListener("click", () => {
   startScanner();
 });
 
-document.getElementById("send-btn").addEventListener("click", () => {
+document.getElementById("send-btn").addEventListener("click", async () => {
   const state = getState();
 
   console.log(
@@ -89,17 +89,18 @@ document.getElementById("send-btn").addEventListener("click", () => {
     date: new Date().toISOString(),
   }));
 
-  const res = sendScannerData(scannerData);
-
-  if (res) {
-    showSentModal();
-  } else {
-    console.log("res:", res, "Something went wrong");
-  }
+  const res = await sendScannerData(scannerData);
 
   hideModal();
+
+  if (!res) {
+    console.log("Something went wrong");
+  } else {
+    showSentModal();
+    setTimeout(hideSentModal, TIMEOUT);
+  }
+
   setTimeout(resetState, TIMEOUT);
-  setTimeout(hideSentModal, TIMEOUT);
   setTimeout(startScanner, TIMEOUT);
 });
 
