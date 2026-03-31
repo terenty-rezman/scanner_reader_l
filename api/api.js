@@ -3,6 +3,7 @@ import { CONFIG } from "./../config.js";
 export async function sendScannerData(payload) {
   // console.log("payload", payload);
   console.log("CONFIG.API_URL", CONFIG.API_URL);
+  console.log("final_URL", CONFIG.API_URL + "/api/test/scanner-data");
   console.log("CONFIG.API_KEY_HEADER", CONFIG.API_KEY_HEADER);
   console.log("CONFIG.API_KEY", CONFIG.API_KEY);
 
