@@ -3,6 +3,7 @@ import { hideModal, showSentModal, hideSentModal } from "./modules/modal.js";
 import { getState, resetState, scannedSet } from "./modules/state.js";
 import { sendScannerData } from "./api/api.js";
 
+const tg = window.Telegram?.WebApp;
 const TIMEOUT = 3000;
 
 const screenResolution = {
@@ -82,11 +83,19 @@ document.getElementById("send-btn").addEventListener("click", async () => {
     }),
   );
 
+  const signedInitData = tg.initData;
+  console.log("Signed initData:", signedInitData);
+
+  console.log("initDataUnsafe:", tg.initDataUnsafe);
+
   const scannedArray = [...state.scannedSet];
   const scannerData = scannedArray.map((item) => ({
     text: item.decodedText,
     format: item.result?.format?.formatName,
     date: new Date().toISOString(),
+    telegramInitData: tg.initData,
+    chatId: tg.initDataUnsafe.chat?.id ?? tg.initDataUnsafe.user.id,
+    userId: tg.initDataUnsafe.user.id,
   }));
 
   console.log("scannerData - before sending", scannerData);

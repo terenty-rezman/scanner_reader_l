@@ -1,15 +1,14 @@
 import { CONFIG } from "./../config.js";
 
 export async function sendScannerData(payload) {
-  // console.log("payload", payload);
-  console.log("CONFIG.API_URL", CONFIG.API_URL);
-  console.log("final_URL", CONFIG.API_URL + "/api/test/scanner-data");
-  console.log("CONFIG.API_KEY_HEADER", CONFIG.API_KEY_HEADER);
-  console.log("CONFIG.API_KEY", CONFIG.API_KEY);
+  console.log("payload", payload);
+
+  document.getElementById("telegram-init-data").textContent =
+    `Telegram Init Data: ${payload[0]?.telegramInitData || "N/A"}`;
 
   try {
     const { data: serverResponse } = await axios.post(
-      CONFIG.API_URL + "/api/test/scanner-data",
+      CONFIG.API_URL + "/api/scanner/product",
       {
         scannerData: payload,
       },
@@ -20,6 +19,8 @@ export async function sendScannerData(payload) {
       throw new Error(serverResponse?.message || "Server returned failure");
 
     console.log(serverResponse.message || "Success");
+    document.getElementById("server-response").textContent =
+      `Server Response: ${serverResponse.message || "Success"}`;
 
     return true;
   } catch (error) {
