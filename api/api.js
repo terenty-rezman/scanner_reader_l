@@ -11,9 +11,8 @@ export async function sendScannerData(payload) {
       { headers: { [CONFIG.API_KEY_HEADER]: CONFIG.API_KEY } },
     );
 
-    if (!serverResponse?.success) {
+    if (!serverResponse?.success)
       throw new Error(serverResponse?.message || "Server returned failure");
-    }
 
     console.log(serverResponse.message || "Success");
 
