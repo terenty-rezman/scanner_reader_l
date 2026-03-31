@@ -89,6 +89,7 @@ document.getElementById("send-btn").addEventListener("click", async () => {
     date: new Date().toISOString(),
   }));
 
+  console.log("scannerData - before sending", scannerData);
   const res = await sendScannerData(scannerData);
 
   hideModal();
