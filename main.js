@@ -72,6 +72,27 @@ document.getElementById("rescan-btn").addEventListener("click", () => {
   startScanner();
 });
 
+document.getElementById("test-btn").addEventListener("click", async () => {
+  const scannerData = [
+    {
+      text: "test-text_____sdajf9saHPUOIH9waru920324u09u0234u09u0234u09",
+      format: "test-format",
+      date: new Date().toISOString(),
+      telegramInitData: tg.initData,
+      chatId: tg.initDataUnsafe.chat?.id ?? tg.initDataUnsafe.user?.id,
+      userId: tg.initDataUnsafe.user?.id,
+    },
+  ];
+  const res = await sendScannerData(scannerData);
+
+  if (!res) {
+    console.log("Something went wrong");
+  } else {
+    showSentModal();
+    setTimeout(hideSentModal, TIMEOUT);
+  }
+});
+
 document.getElementById("send-btn").addEventListener("click", async () => {
   const state = getState();
 
